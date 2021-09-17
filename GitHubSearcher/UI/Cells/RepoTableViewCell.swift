@@ -12,14 +12,22 @@ class RepoTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var updatedDate: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
+    @IBOutlet weak var licenseLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.layoutIfNeeded()
+        descriptionLabel.preferredMaxLayoutWidth = descriptionLabel.bounds.width
+    }
+
     func setup(withRepo repo: Repository, isLastCell: Bool = false) {
         DispatchQueue.main.async {
-            self.nameLabel.text = repo.name
-            self.descriptionLabel.text = repo.license?.name
-            self.updatedDate.text = repo.updatedDate
-            self.ownerLabel.text = repo.owner?.login
+            self.nameLabel.text = "Owner: \(repo.name ?? "Unnamed")"
+            self.descriptionLabel.text = repo.description ?? "No description"
+            self.updatedDate.text = "Updated: \(repo.updatedDate ?? "-")"
+            self.ownerLabel.text = "Owner: \(repo.owner?.login ?? "-")"
+            self.licenseLabel.text = "License: \(repo.license?.name ?? "-")"
             self.separatorView.isHidden = isLastCell
         }
     }
