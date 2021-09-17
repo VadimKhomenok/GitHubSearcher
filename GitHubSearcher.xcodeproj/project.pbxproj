@@ -8,13 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		674BDA5826F3CCA900B7404A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA5726F3CCA900B7404A /* AppDelegate.swift */; };
-		674BDA5A26F3CCA900B7404A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA5926F3CCA900B7404A /* SceneDelegate.swift */; };
 		674BDA5C26F3CCA900B7404A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA5B26F3CCA900B7404A /* ViewController.swift */; };
 		674BDA5F26F3CCA900B7404A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 674BDA5D26F3CCA900B7404A /* Main.storyboard */; };
 		674BDA6126F3CCAE00B7404A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 674BDA6026F3CCAE00B7404A /* Assets.xcassets */; };
 		674BDA6426F3CCAE00B7404A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 674BDA6226F3CCAE00B7404A /* LaunchScreen.storyboard */; };
 		674BDA6F26F3CCAF00B7404A /* GitHubSearcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA6E26F3CCAF00B7404A /* GitHubSearcherTests.swift */; };
 		674BDA7A26F3CCAF00B7404A /* GitHubSearcherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA7926F3CCAF00B7404A /* GitHubSearcherUITests.swift */; };
+		674BDA8B26F3D22300B7404A /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA8A26F3D22300B7404A /* GitHubAPI.swift */; };
+		674BDA8E26F3D23E00B7404A /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA8D26F3D23E00B7404A /* Repository.swift */; };
+		674BDA9326F3FB2A00B7404A /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA9226F3FB2A00B7404A /* RepoTableViewCell.swift */; };
+		674BDA9726F403BB00B7404A /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA9626F403BB00B7404A /* Owner.swift */; };
+		674BDA9926F403C900B7404A /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA9826F403C900B7404A /* License.swift */; };
+		674BDA9B26F403DF00B7404A /* RepositoriesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA9A26F403DF00B7404A /* RepositoriesWrapper.swift */; };
+		674BDA9D26F410C700B7404A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA9C26F410C700B7404A /* Constants.swift */; };
+		674BDAA026F4128B00B7404A /* ReposSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA9F26F4128B00B7404A /* ReposSearcher.swift */; };
+		674BDAA326F4155C00B7404A /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAA226F4155C00B7404A /* Errors.swift */; };
+		674BDAA626F4A34600B7404A /* UIViewController+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAA526F4A34600B7404A /* UIViewController+HideKeyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +46,6 @@
 /* Begin PBXFileReference section */
 		674BDA5426F3CCA900B7404A /* GitHubSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		674BDA5726F3CCA900B7404A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		674BDA5926F3CCA900B7404A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		674BDA5B26F3CCA900B7404A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		674BDA5E26F3CCA900B7404A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		674BDA6026F3CCAE00B7404A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +57,16 @@
 		674BDA7526F3CCAF00B7404A /* GitHubSearcherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubSearcherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		674BDA7926F3CCAF00B7404A /* GitHubSearcherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubSearcherUITests.swift; sourceTree = "<group>"; };
 		674BDA7B26F3CCAF00B7404A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		674BDA8A26F3D22300B7404A /* GitHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
+		674BDA8D26F3D23E00B7404A /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		674BDA9226F3FB2A00B7404A /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
+		674BDA9626F403BB00B7404A /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		674BDA9826F403C900B7404A /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		674BDA9A26F403DF00B7404A /* RepositoriesWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesWrapper.swift; sourceTree = "<group>"; };
+		674BDA9C26F410C700B7404A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		674BDA9F26F4128B00B7404A /* ReposSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposSearcher.swift; sourceTree = "<group>"; };
+		674BDAA226F4155C00B7404A /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		674BDAA526F4A34600B7404A /* UIViewController+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +117,15 @@
 		674BDA5626F3CCA900B7404A /* GitHubSearcher */ = {
 			isa = PBXGroup;
 			children = (
+				674BDA8926F3D1E600B7404A /* GitHubAPI */,
+				674BDA8C26F3D23100B7404A /* Model */,
+				674BDA9E26F4127800B7404A /* Logic */,
+				674BDAA126F4154F00B7404A /* ErrorHandling */,
+				674BDAA426F4A33100B7404A /* Extensions */,
 				674BDA5726F3CCA900B7404A /* AppDelegate.swift */,
-				674BDA5926F3CCA900B7404A /* SceneDelegate.swift */,
+				674BDA9C26F410C700B7404A /* Constants.swift */,
 				674BDA5B26F3CCA900B7404A /* ViewController.swift */,
+				674BDA9026F3FB0C00B7404A /* UI */,
 				674BDA5D26F3CCA900B7404A /* Main.storyboard */,
 				674BDA6026F3CCAE00B7404A /* Assets.xcassets */,
 				674BDA6226F3CCAE00B7404A /* LaunchScreen.storyboard */,
@@ -126,6 +150,65 @@
 				674BDA7B26F3CCAF00B7404A /* Info.plist */,
 			);
 			path = GitHubSearcherUITests;
+			sourceTree = "<group>";
+		};
+		674BDA8926F3D1E600B7404A /* GitHubAPI */ = {
+			isa = PBXGroup;
+			children = (
+				674BDA8A26F3D22300B7404A /* GitHubAPI.swift */,
+			);
+			path = GitHubAPI;
+			sourceTree = "<group>";
+		};
+		674BDA8C26F3D23100B7404A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				674BDA9A26F403DF00B7404A /* RepositoriesWrapper.swift */,
+				674BDA9626F403BB00B7404A /* Owner.swift */,
+				674BDA9826F403C900B7404A /* License.swift */,
+				674BDA8D26F3D23E00B7404A /* Repository.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		674BDA9026F3FB0C00B7404A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				674BDA9126F3FB1A00B7404A /* Cells */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		674BDA9126F3FB1A00B7404A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				674BDA9226F3FB2A00B7404A /* RepoTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		674BDA9E26F4127800B7404A /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				674BDA9F26F4128B00B7404A /* ReposSearcher.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		674BDAA126F4154F00B7404A /* ErrorHandling */ = {
+			isa = PBXGroup;
+			children = (
+				674BDAA226F4155C00B7404A /* Errors.swift */,
+			);
+			path = ErrorHandling;
+			sourceTree = "<group>";
+		};
+		674BDAA426F4A33100B7404A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				674BDAA526F4A34600B7404A /* UIViewController+HideKeyboard.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +341,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				674BDA9926F403C900B7404A /* License.swift in Sources */,
 				674BDA5C26F3CCA900B7404A /* ViewController.swift in Sources */,
+				674BDA9726F403BB00B7404A /* Owner.swift in Sources */,
+				674BDA8B26F3D22300B7404A /* GitHubAPI.swift in Sources */,
 				674BDA5826F3CCA900B7404A /* AppDelegate.swift in Sources */,
-				674BDA5A26F3CCA900B7404A /* SceneDelegate.swift in Sources */,
+				674BDAA026F4128B00B7404A /* ReposSearcher.swift in Sources */,
+				674BDA9B26F403DF00B7404A /* RepositoriesWrapper.swift in Sources */,
+				674BDAA326F4155C00B7404A /* Errors.swift in Sources */,
+				674BDA9326F3FB2A00B7404A /* RepoTableViewCell.swift in Sources */,
+				674BDAA626F4A34600B7404A /* UIViewController+HideKeyboard.swift in Sources */,
+				674BDA8E26F3D23E00B7404A /* Repository.swift in Sources */,
+				674BDA9D26F410C700B7404A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +458,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -421,7 +513,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

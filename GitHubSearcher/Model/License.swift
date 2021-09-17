@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct License: Codable {
+    var key: String?
+    var name: String?
+    var url: String?
+}

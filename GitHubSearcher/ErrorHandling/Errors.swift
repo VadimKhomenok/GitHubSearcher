@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum Errors: Error {
+    case requestFailed
+    case noInternetConnection
+}
