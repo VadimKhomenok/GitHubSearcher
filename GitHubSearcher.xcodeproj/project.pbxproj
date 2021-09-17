@@ -27,6 +27,8 @@
 		674BDAA826F4AE5200B7404A /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAA726F4AE5200B7404A /* HTTPMethods.swift */; };
 		674BDAAA26F4AE9200B7404A /* GitHubAPIRequestsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAA926F4AE9200B7404A /* GitHubAPIRequestsExtension.swift */; };
 		674BDAAC26F4B7AA00B7404A /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAAB26F4B7AA00B7404A /* UIViewController+Loading.swift */; };
+		674BDAAE26F4BCD400B7404A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAAD26F4BCD400B7404A /* String+Extension.swift */; };
+		674BDAB026F4CB6900B7404A /* GitHubAPIQueryConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAAF26F4CB6800B7404A /* GitHubAPIQueryConstructor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		674BDAA726F4AE5200B7404A /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
 		674BDAA926F4AE9200B7404A /* GitHubAPIRequestsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIRequestsExtension.swift; sourceTree = "<group>"; };
 		674BDAAB26F4B7AA00B7404A /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
+		674BDAAD26F4BCD400B7404A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		674BDAAF26F4CB6800B7404A /* GitHubAPIQueryConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIQueryConstructor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,8 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				674BDA8A26F3D22300B7404A /* GitHubAPI.swift */,
-				674BDAA726F4AE5200B7404A /* HTTPMethods.swift */,
+				674BDAAF26F4CB6800B7404A /* GitHubAPIQueryConstructor.swift */,
 				674BDAA926F4AE9200B7404A /* GitHubAPIRequestsExtension.swift */,
+				674BDAA726F4AE5200B7404A /* HTTPMethods.swift */,
 			);
 			path = GitHubAPI;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				674BDAA526F4A34600B7404A /* UIViewController+HideKeyboard.swift */,
+				674BDAAD26F4BCD400B7404A /* String+Extension.swift */,
 				674BDAAB26F4B7AA00B7404A /* UIViewController+Loading.swift */,
 			);
 			path = Extensions;
@@ -354,6 +360,7 @@
 				674BDA5C26F3CCA900B7404A /* ViewController.swift in Sources */,
 				674BDA9726F403BB00B7404A /* Owner.swift in Sources */,
 				674BDA8B26F3D22300B7404A /* GitHubAPI.swift in Sources */,
+				674BDAAE26F4BCD400B7404A /* String+Extension.swift in Sources */,
 				674BDA5826F3CCA900B7404A /* AppDelegate.swift in Sources */,
 				674BDAA026F4128B00B7404A /* ReposSearcher.swift in Sources */,
 				674BDAA826F4AE5200B7404A /* HTTPMethods.swift in Sources */,
@@ -362,6 +369,7 @@
 				674BDAA326F4155C00B7404A /* Errors.swift in Sources */,
 				674BDA9326F3FB2A00B7404A /* RepoTableViewCell.swift in Sources */,
 				674BDAA626F4A34600B7404A /* UIViewController+HideKeyboard.swift in Sources */,
+				674BDAB026F4CB6900B7404A /* GitHubAPIQueryConstructor.swift in Sources */,
 				674BDA8E26F3D23E00B7404A /* Repository.swift in Sources */,
 				674BDAAC26F4B7AA00B7404A /* UIViewController+Loading.swift in Sources */,
 				674BDA9D26F410C700B7404A /* Constants.swift in Sources */,

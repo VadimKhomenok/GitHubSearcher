@@ -7,7 +7,7 @@
 
 import Foundation
 
-fileprivate enum Endpoint: String {
+fileprivate enum RequestAddress: String {
     case searchRepo = "/search/repositories"
     
     private var baseURL: String {
@@ -26,35 +26,26 @@ fileprivate enum Endpoint: String {
 struct GitHubAPI {
     ///
     func searchOpenSourceRepos(keyword: String, page: Int? = nil, completion: @escaping (RepoWrapper) -> Void) {
-        cancelTasks()
-        
-        var queryString = "?q=\(keyword)"
+        let qualifiers: [QueryQualifiers] = [.license(searchLicenses: Constants.openSourceLicenses)]
+        var parameters: [QueryParameter]?
         if let page = page {
-            queryString = queryString + "&page=\(page)"
+            parameters = [.page(value: page)]
         }
         
-        guard let url = Endpoint.searchRepo.url(withQuery: queryString) else { return }
-        performRequest(withUrl: url, httpMethod: .get, parameters: nil) { (items: RepoWrapper) in
+        let queryString = QueryConstructor.queryString(forKeyword: keyword, qualifiers: qualifiers, withParameters: parameters)
+        guard let url = RequestAddress.searchRepo.url(withQuery: queryString) else { return }
+        
+        cancelTasks()
+        performRequest(withUrl: url, httpMethod: .get) { (items: RepoWrapper) in
             completion(items)
         }
     }
     
     /// Generic function to execute a request with json data response and to decode this data into specific object
-    private func performRequest<T: Decodable>(withUrl url: URL, httpMethod: HTTPMethod, parameters: [String : Any]? = nil, completion: @escaping (T) -> Void) {
+    private func performRequest<T: Decodable>(withUrl url: URL, httpMethod: HTTPMethod, completion: @escaping (T) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
         request.addApiVersionHeader()
-        
-//        if let parameters = parameters {
-//            do {
-//                let jsonData = try JSONSerialization.data(withJSONObject: parameters)
-//                request.httpBody = jsonData
-//                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//                request.setValue("application/json", forHTTPHeaderField: "Accept")
-//            } catch {
-//                return .failure(.invalidJsonFormatRequest)
-//            }
-//        }
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, let json = try? JSONDecoder().decode(T.self, from: data) else { return }

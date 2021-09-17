@@ -19,10 +19,10 @@ protocol ReposSearcherProtocol {
 
 class ReposSearcher: ReposSearcherProtocol {
     private let gitHubAPI = GitHubAPI()
-    fileprivate var cachedSearchResult: RepoWrapper?
+    private var cachedSearchResult: RepoWrapper?
     private var fetchInProgress: Bool = false
     
-    var delegate: ReposSearcherDelegate?
+    weak var delegate: ReposSearcherDelegate?
     
     func searchRepositories(withKeyword keyword: String) {
         fetchInProgress = false

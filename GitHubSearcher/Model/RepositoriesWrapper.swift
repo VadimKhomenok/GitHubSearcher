@@ -17,6 +17,8 @@ struct RepoWrapper: Codable {
     }
 }
 
+// MARK: - Paging calculations
+
 extension RepoWrapper {
     var isFinished: Bool {
         (items?.count ?? 0) == totalCount

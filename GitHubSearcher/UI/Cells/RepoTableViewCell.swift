@@ -17,7 +17,7 @@ class RepoTableViewCell: UITableViewCell {
     func setup(withRepo repo: Repository, isLastCell: Bool = false) {
         DispatchQueue.main.async {
             self.nameLabel.text = repo.name
-            self.descriptionLabel.text = repo.description
+            self.descriptionLabel.text = repo.license?.name
             self.updatedDate.text = repo.updatedDate
             self.ownerLabel.text = repo.owner?.login
             self.separatorView.isHidden = isLastCell
