@@ -8,12 +8,11 @@
 import Foundation
 
 struct RepoWrapper: Codable {
-    var incompleteResults: Bool
     var totalCount: Int
     var items: [Repository]?
     
     private enum CodingKeys : String, CodingKey {
-        case incompleteResults = "incomplete_results", totalCount = "total_count", items
+        case totalCount = "total_count", items
     }
 }
 

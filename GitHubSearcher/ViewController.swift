@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, TapOutsideHideKeyboardProtocol, LoadingStateProtocol, OpenSafariProtocol {
+class ViewController: UIViewController, TapOutsideHideKeyboardProtocol, LoadingStateProtocol, OpenSafariProtocol, AlertPresentableProtocol {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var reposTableView: UITableView!
     @IBOutlet weak var noResultsLabel: UILabel!
@@ -24,21 +24,15 @@ class ViewController: UIViewController, TapOutsideHideKeyboardProtocol, LoadingS
         }
     }
     
-    #warning("Should be removed")
-    private var hasMore: Bool = false {
-        didSet {
-            DispatchQueue.main.async {
-                self.reposTableView.tableFooterView?.isHidden = !self.hasMore
-            }
-        }
-    }
-    
     var hideKeyboardTapGestureRecognizer: UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reposTableView.estimatedRowHeight = 44.0
+        reposTableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        reposTableView.scrollIndicatorInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        
+        reposTableView.estimatedRowHeight = 150.0
         reposTableView.rowHeight = UITableView.automaticDimension
         reposTableView.tableFooterView?.isHidden = true
         
@@ -49,18 +43,29 @@ class ViewController: UIViewController, TapOutsideHideKeyboardProtocol, LoadingS
     }
     
     @objc fileprivate func searchRepos() {
-        print("-- searchRepos() called")
         guard let searchText = searchTextField.text, !searchText.isEmpty else { return }
         loading(inProgress: true)
-        reposSearcher.searchRepositories(withKeyword: searchText)
+        
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.reposSearcher.searchRepositories(withKeyword: searchText)
+        }
     }
     
     @IBAction func loadMoreButtonClicked(_ sender: Any) {
+        loadMore()
+    }
+    
+    fileprivate func loadMore() {
         guard let searchText = searchTextField.text, !searchText.isEmpty else { return }
         loading(inProgress: true)
-        reposSearcher.fetchMore(withKeyword: searchText)
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.reposSearcher.fetchMore(withKeyword: searchText)
+        }
     }
 }
+
+
+// MARK: - UITableView Data Source
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,11 +77,15 @@ extension ViewController: UITableViewDataSource {
         if let repoCell = cell as? RepoTableViewCell, reposList.count > indexPath.row {
             let isLastCell = (indexPath.row == reposList.count - 1)
             repoCell.setup(withRepo: reposList[indexPath.row], isLastCell: isLastCell)
+            repoCell.layoutIfNeeded()
         }
         
         return cell ?? UITableViewCell()
     }
 }
+
+
+// MARK: - UITableView Delegate
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -88,7 +97,19 @@ extension ViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        
+        if maximumOffset - currentOffset <= 10.0 {
+            loadMore()
+        }
+    }
 }
+
+
+// MARK: - UITextField Delegate
 
 extension ViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -98,26 +119,33 @@ extension ViewController: UITextFieldDelegate {
     }
 }
 
+
+// MARK: - ReposSearcher Delegate
+
 extension ViewController: ReposSearcherDelegate {
     func repositoriesLoaded(repositoriesList: [Repository], hasMore: Bool) {
         loading(inProgress: false)
         reposList = repositoriesList
-        self.hasMore = hasMore
+        
         DispatchQueue.main.async {
             self.reposTableView.reloadData()
+            self.reposTableView.tableFooterView?.isHidden = !hasMore
         }
     }
     
     func moreRepositoriesLoaded(newRepositoriesList: [Repository], hasMore: Bool) {
         loading(inProgress: false)
-        self.reposList.append(contentsOf: newRepositoriesList)
-        self.hasMore = hasMore
+        reposList.append(contentsOf: newRepositoriesList)
+        
         DispatchQueue.main.async {
+            // TODO: - Better to implement with performBatchUpdates and insertRows
             self.reposTableView.reloadData()
-            
-//            self.reposTableView.performBatchUpdates {
-//                self.reposTableView.insertRows(at: [IndexPath(row: self.reposList.count - 1, section: 0)], with: .automatic)
-//            }
+            self.reposTableView.tableFooterView?.isHidden = !hasMore
         }
+    }
+    
+    func errorHappened(error: SearchError) {
+        loading(inProgress: false)
+        showErrorAlert(withError: error)
     }
 }

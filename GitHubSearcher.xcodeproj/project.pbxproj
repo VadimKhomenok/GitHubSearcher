@@ -30,6 +30,8 @@
 		674BDAAE26F4BCD400B7404A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAAD26F4BCD400B7404A /* String+Extension.swift */; };
 		674BDAB026F4CB6900B7404A /* GitHubAPIQueryConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAAF26F4CB6800B7404A /* GitHubAPIQueryConstructor.swift */; };
 		674BDAB326F4CF3200B7404A /* OpenSafariProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAB226F4CF3200B7404A /* OpenSafariProtocol.swift */; };
+		674BDAB526F4E0A900B7404A /* AlertPresentableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAB426F4E0A900B7404A /* AlertPresentableProtocol.swift */; };
+		676F8AC126F4F0B4005D5ACC /* GradientTransparencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F8AC026F4F0B4005D5ACC /* GradientTransparencyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		674BDAAD26F4BCD400B7404A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		674BDAAF26F4CB6800B7404A /* GitHubAPIQueryConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIQueryConstructor.swift; sourceTree = "<group>"; };
 		674BDAB226F4CF3200B7404A /* OpenSafariProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSafariProtocol.swift; sourceTree = "<group>"; };
+		674BDAB426F4E0A900B7404A /* AlertPresentableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentableProtocol.swift; sourceTree = "<group>"; };
+		676F8AC026F4F0B4005D5ACC /* GradientTransparencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientTransparencyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				674BDA9126F3FB1A00B7404A /* Cells */,
+				676F8AC026F4F0B4005D5ACC /* GradientTransparencyView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				674BDAB226F4CF3200B7404A /* OpenSafariProtocol.swift */,
+				674BDAB426F4E0A900B7404A /* AlertPresentableProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676F8AC126F4F0B4005D5ACC /* GradientTransparencyView.swift in Sources */,
 				674BDA9926F403C900B7404A /* License.swift in Sources */,
 				674BDA5C26F3CCA900B7404A /* ViewController.swift in Sources */,
 				674BDA9726F403BB00B7404A /* Owner.swift in Sources */,
@@ -380,6 +387,7 @@
 				674BDAA326F4155C00B7404A /* Errors.swift in Sources */,
 				674BDAB326F4CF3200B7404A /* OpenSafariProtocol.swift in Sources */,
 				674BDA9326F3FB2A00B7404A /* RepoTableViewCell.swift in Sources */,
+				674BDAB526F4E0A900B7404A /* AlertPresentableProtocol.swift in Sources */,
 				674BDAA626F4A34600B7404A /* UIViewController+HideKeyboard.swift in Sources */,
 				674BDAB026F4CB6900B7404A /* GitHubAPIQueryConstructor.swift in Sources */,
 				674BDA8E26F3D23E00B7404A /* Repository.swift in Sources */,
