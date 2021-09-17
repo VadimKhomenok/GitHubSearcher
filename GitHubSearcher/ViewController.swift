@@ -7,21 +7,22 @@
 
 import UIKit
 
-class ViewController: UIViewController, TapOutsideHideKeyboardProtocol, LoadingStateProtocol {
+class ViewController: UIViewController, TapOutsideHideKeyboardProtocol, LoadingStateProtocol, OpenSafariProtocol {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var reposTableView: UITableView!
+    @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var reposSearcher = ReposSearcher()
     
     private var reposList: [Repository] = []
-//    {
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.reposTableView.reloadData()
-//            }
-//        }
-//    }
+    {
+        didSet {
+            DispatchQueue.main.async {
+                self.noResultsLabel.isHidden = self.reposList.count > 0
+            }
+        }
+    }
     
     #warning("Should be removed")
     private var hasMore: Bool = false {
@@ -78,9 +79,15 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return hasMore ? 40 : .leastNonzeroMagnitude
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard reposList.count > indexPath.row else { return }
+        let selectedRepo = reposList[indexPath.row]
+        if let urlString = selectedRepo.url {
+            open(url: urlString)
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 extension ViewController: UITextFieldDelegate {

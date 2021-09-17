@@ -117,6 +117,12 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="noO-4Y-Ipg"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGd-4W-PjW">
+                                <rect key="frame" x="166" y="189.5" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter repository name to start search:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5e-Zq-rgZ">
                                 <rect key="frame" x="20" y="74" width="199" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -137,7 +143,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qvS-gm-IFP" secondAttribute="trailing" constant="20" id="U1X-AT-fRi"/>
                             <constraint firstItem="2Sv-B0-ZXO" firstAttribute="top" secondItem="qvS-gm-IFP" secondAttribute="bottom" constant="50" id="WS8-nh-S5j"/>
                             <constraint firstItem="z5e-Zq-rgZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="X74-q9-x2x"/>
+                            <constraint firstItem="CGd-4W-PjW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zyc-pm-WHT"/>
                             <constraint firstItem="qvS-gm-IFP" firstAttribute="top" secondItem="z5e-Zq-rgZ" secondAttribute="bottom" constant="8" id="c7S-Vw-o9o"/>
+                            <constraint firstItem="CGd-4W-PjW" firstAttribute="top" secondItem="2Sv-B0-ZXO" secondAttribute="top" constant="10" id="dOI-pY-Hjt"/>
                             <constraint firstItem="qvS-gm-IFP" firstAttribute="leading" secondItem="z5e-Zq-rgZ" secondAttribute="leading" id="dzL-JU-MIP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Sv-B0-ZXO" secondAttribute="trailing" id="m2N-t5-qhO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Sv-B0-ZXO" secondAttribute="bottom" id="ocy-JG-vAG"/>
@@ -146,6 +154,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="AMd-Jw-QKB" id="m0A-EE-7V1"/>
+                        <outlet property="noResultsLabel" destination="CGd-4W-PjW" id="Ujl-WI-qLh"/>
                         <outlet property="reposTableView" destination="2Sv-B0-ZXO" id="Y8i-Gx-OwU"/>
                         <outlet property="searchTextField" destination="qvS-gm-IFP" id="XVq-BU-4UP"/>
                     </connections>
@@ -156,6 +165,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
