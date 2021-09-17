@@ -7,26 +7,27 @@
 
 import UIKit
 
-class ViewController: UIViewController, TapOutsideHideKeyboardProtocol {
+class ViewController: UIViewController, TapOutsideHideKeyboardProtocol, LoadingStateProtocol {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var reposTableView: UITableView!
-    @IBOutlet weak var loadMoreButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var reposSearcher = ReposSearcher()
     
-    private var reposList: [Repository] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.reposTableView.reloadData()
-            }
-        }
-    }
+    private var reposList: [Repository] = []
+//    {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.reposTableView.reloadData()
+//            }
+//        }
+//    }
     
     #warning("Should be removed")
     private var hasMore: Bool = false {
         didSet {
             DispatchQueue.main.async {
-                self.loadMoreButton.isHidden = !self.hasMore
+                self.reposTableView.tableFooterView?.isHidden = !self.hasMore
             }
         }
     }
@@ -38,6 +39,7 @@ class ViewController: UIViewController, TapOutsideHideKeyboardProtocol {
         
         reposTableView.estimatedRowHeight = 44.0
         reposTableView.rowHeight = UITableView.automaticDimension
+        reposTableView.tableFooterView?.isHidden = true
         
         reposSearcher.delegate = self
         searchTextField.delegate = self
@@ -48,11 +50,13 @@ class ViewController: UIViewController, TapOutsideHideKeyboardProtocol {
     @objc fileprivate func searchRepos() {
         print("-- searchRepos() called")
         guard let searchText = searchTextField.text, !searchText.isEmpty else { return }
+        loading(inProgress: true)
         reposSearcher.searchRepositories(withKeyword: searchText)
     }
     
     @IBAction func loadMoreButtonClicked(_ sender: Any) {
         guard let searchText = searchTextField.text, !searchText.isEmpty else { return }
+        loading(inProgress: true)
         reposSearcher.fetchMore(withKeyword: searchText)
     }
 }
@@ -65,11 +69,18 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RepoTableViewCell.self))
         if let repoCell = cell as? RepoTableViewCell, reposList.count > indexPath.row {
-            repoCell.setup(withRepo: reposList[indexPath.row])
+            let isLastCell = (indexPath.row == reposList.count - 1)
+            repoCell.setup(withRepo: reposList[indexPath.row], isLastCell: isLastCell)
         }
         
         return cell ?? UITableViewCell()
     }
+}
+
+extension ViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return hasMore ? 40 : .leastNonzeroMagnitude
+//    }
 }
 
 extension ViewController: UITextFieldDelegate {
@@ -82,20 +93,24 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController: ReposSearcherDelegate {
     func repositoriesLoaded(repositoriesList: [Repository], hasMore: Bool) {
+        loading(inProgress: false)
         reposList = repositoriesList
         self.hasMore = hasMore
+        DispatchQueue.main.async {
+            self.reposTableView.reloadData()
+        }
     }
     
     func moreRepositoriesLoaded(newRepositoriesList: [Repository], hasMore: Bool) {
+        loading(inProgress: false)
         self.reposList.append(contentsOf: newRepositoriesList)
         self.hasMore = hasMore
         DispatchQueue.main.async {
             self.reposTableView.reloadData()
             
 //            self.reposTableView.performBatchUpdates {
-                
 //                self.reposTableView.insertRows(at: [IndexPath(row: self.reposList.count - 1, section: 0)], with: .automatic)
-            }
-//        }
+//            }
+        }
     }
 }

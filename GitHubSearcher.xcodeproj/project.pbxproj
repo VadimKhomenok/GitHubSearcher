@@ -24,6 +24,9 @@
 		674BDAA026F4128B00B7404A /* ReposSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDA9F26F4128B00B7404A /* ReposSearcher.swift */; };
 		674BDAA326F4155C00B7404A /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAA226F4155C00B7404A /* Errors.swift */; };
 		674BDAA626F4A34600B7404A /* UIViewController+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAA526F4A34600B7404A /* UIViewController+HideKeyboard.swift */; };
+		674BDAA826F4AE5200B7404A /* HTTPMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAA726F4AE5200B7404A /* HTTPMethods.swift */; };
+		674BDAAA26F4AE9200B7404A /* GitHubAPIRequestsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAA926F4AE9200B7404A /* GitHubAPIRequestsExtension.swift */; };
+		674BDAAC26F4B7AA00B7404A /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674BDAAB26F4B7AA00B7404A /* UIViewController+Loading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		674BDA9F26F4128B00B7404A /* ReposSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposSearcher.swift; sourceTree = "<group>"; };
 		674BDAA226F4155C00B7404A /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		674BDAA526F4A34600B7404A /* UIViewController+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboard.swift"; sourceTree = "<group>"; };
+		674BDAA726F4AE5200B7404A /* HTTPMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethods.swift; sourceTree = "<group>"; };
+		674BDAA926F4AE9200B7404A /* GitHubAPIRequestsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIRequestsExtension.swift; sourceTree = "<group>"; };
+		674BDAAB26F4B7AA00B7404A /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,10 +128,10 @@
 				674BDA9E26F4127800B7404A /* Logic */,
 				674BDAA126F4154F00B7404A /* ErrorHandling */,
 				674BDAA426F4A33100B7404A /* Extensions */,
+				674BDA9026F3FB0C00B7404A /* UI */,
 				674BDA5726F3CCA900B7404A /* AppDelegate.swift */,
 				674BDA9C26F410C700B7404A /* Constants.swift */,
 				674BDA5B26F3CCA900B7404A /* ViewController.swift */,
-				674BDA9026F3FB0C00B7404A /* UI */,
 				674BDA5D26F3CCA900B7404A /* Main.storyboard */,
 				674BDA6026F3CCAE00B7404A /* Assets.xcassets */,
 				674BDA6226F3CCAE00B7404A /* LaunchScreen.storyboard */,
@@ -156,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				674BDA8A26F3D22300B7404A /* GitHubAPI.swift */,
+				674BDAA726F4AE5200B7404A /* HTTPMethods.swift */,
+				674BDAA926F4AE9200B7404A /* GitHubAPIRequestsExtension.swift */,
 			);
 			path = GitHubAPI;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				674BDAA526F4A34600B7404A /* UIViewController+HideKeyboard.swift */,
+				674BDAAB26F4B7AA00B7404A /* UIViewController+Loading.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -347,11 +356,14 @@
 				674BDA8B26F3D22300B7404A /* GitHubAPI.swift in Sources */,
 				674BDA5826F3CCA900B7404A /* AppDelegate.swift in Sources */,
 				674BDAA026F4128B00B7404A /* ReposSearcher.swift in Sources */,
+				674BDAA826F4AE5200B7404A /* HTTPMethods.swift in Sources */,
 				674BDA9B26F403DF00B7404A /* RepositoriesWrapper.swift in Sources */,
+				674BDAAA26F4AE9200B7404A /* GitHubAPIRequestsExtension.swift in Sources */,
 				674BDAA326F4155C00B7404A /* Errors.swift in Sources */,
 				674BDA9326F3FB2A00B7404A /* RepoTableViewCell.swift in Sources */,
 				674BDAA626F4A34600B7404A /* UIViewController+HideKeyboard.swift in Sources */,
 				674BDA8E26F3D23E00B7404A /* Repository.swift in Sources */,
+				674BDAAC26F4B7AA00B7404A /* UIViewController+Loading.swift in Sources */,
 				674BDA9D26F410C700B7404A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

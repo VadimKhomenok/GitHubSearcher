@@ -7,39 +7,24 @@
 
 import Foundation
 
-public enum HTTPMethod: String {
-    case get = "GET"
-    case put = "PUT"
-    case post = "POST"
-    case delete = "DELETE"
+fileprivate enum Endpoint: String {
+    case searchRepo = "/search/repositories"
+    
+    private var baseURL: String {
+        return "https://api.github.com"
+    }
+    
+    var url: URL? {
+        return URL(string: baseURL.appending(rawValue))
+    }
+    
+    func url(withQuery query: String) -> URL? {
+        return URL(string: baseURL.appending(rawValue).appending(query))
+    }
 }
 
 struct GitHubAPI {
-    
-    private enum Endpoint: String {
-        case searchRepo = "/search/repositories"
-        
-        private var baseURL: String {
-            return "https://api.github.com"
-        }
-        
-        var url: URL? {
-            return URL(string: baseURL.appending(rawValue))
-        }
-        
-        func url(withQuery query: String) -> URL? {
-            return URL(string: baseURL.appending(rawValue).appending(query))
-        }
-    }
-    
-    private func cancelTasks() {
-        URLSession.shared.getAllTasks(completionHandler: { tasks in
-            tasks.forEach { task in
-                task.cancel()
-            }
-        })
-    }
-
+    ///
     func searchOpenSourceRepos(keyword: String, page: Int? = nil, completion: @escaping (RepoWrapper) -> Void) {
         cancelTasks()
         
@@ -54,11 +39,11 @@ struct GitHubAPI {
         }
     }
     
+    /// Generic function to execute a request with json data response and to decode this data into specific object
     private func performRequest<T: Decodable>(withUrl url: URL, httpMethod: HTTPMethod, parameters: [String : Any]? = nil, completion: @escaping (T) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
-        
-        request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
+        request.addApiVersionHeader()
         
 //        if let parameters = parameters {
 //            do {
@@ -84,5 +69,14 @@ struct GitHubAPI {
         }
         
         task.resume()
+    }
+    
+    /// Cancels previous requests before the execution of new one
+    private func cancelTasks() {
+        URLSession.shared.getAllTasks(completionHandler: { tasks in
+            tasks.forEach { task in
+                task.cancel()
+            }
+        })
     }
 }
